@@ -36,7 +36,7 @@ function LandingScreen() {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center gap-6">
+    <div className="flex flex-col justify-center items-center gap-6 text-center">
       <div>
         <h1 className="text-3xl">Geekster Education Planner</h1>
       </div>
