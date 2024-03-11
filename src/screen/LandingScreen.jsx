@@ -2,18 +2,27 @@ import { useState } from "react";
 
 function LandingScreen() {
 
+  // const subjectInput=document.getElementById("input")
   const [data, setdata] = useState([]);
-  const [hours, setHours] = useState();
+  const [hours, setHours] = useState(0);
   const [subject, setSubject] = useState();
 
   function addItems() {
 
+   if(hours>0){
     let currentValue = {
       subject: subject,
       hours: hours,
     };
 
     setdata([...data, currentValue]);
+   }
+   if(hours===0)alert("You have select 0 houes so You don't want to study ummmmmmmm 🥱🥱🥱")
+   if(hours<0)alert("You realy want to study.....😒")
+
+   setHours(0)
+   setSubject("")
+
     
   }
 
@@ -44,17 +53,19 @@ function LandingScreen() {
         <input
           type="text"
           placeholder="Subject"
-          className="border-2 px-2 w-4/12"
+          className="border-2 border-gray-400 px-2 w-4/12"
+          value={subject}
           onChange={(e) => setSubject(e.target.value)}
         />
         <input
           type="number"
           placeholder="Hours"
-          className="border-2 px-2 w-2/12"
+          value={hours}
+          className="border-2 px-2 border-gray-400 w-2/12"
           onChange={(e) => setHours(e.target.value)}
         />
         <button
-          className="px-2 py-1 rounded-lg text-white"
+          className="px-2 py-1 rounded-lg  text-white"
           style={{ backgroundColor: "#3b82f6" }}
           onClick={addItems}
         >
@@ -65,7 +76,7 @@ function LandingScreen() {
         {data.map((item, index) => {
           return (
             <div
-              className="flex justify-center items-center gap-1 py-2"
+              className="flex justify-center items-center gap-1 py-2 border-4 px-5 rounded-lg border-green-500 my-3"
               key={index}
               onClick={(e) => updateValue(index, e)}
             >
